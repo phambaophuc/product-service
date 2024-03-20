@@ -43,3 +43,6 @@ springdoc:
     version: openapi_3_1
   cache:
     disabled: true
+
+gateway:
+  url: ${GATEWAY_URL:http://localhost:8765/product-service}
