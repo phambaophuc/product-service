@@ -1,0 +1,45 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /product-service
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: product-service
+  datasource:
+    url: jdbc:mysql://database-aws.cv4moeoi4rwx.ap-southeast-1.rds.amazonaws.com:3306/fast_food_express_db
+    username: admin
+    password: 123456789
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    import: 'optional:configserver:'
+#  profiles:
+#    active: dev
+#  cloud:
+#    config:
+#      profile: dev
+
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+springdoc:
+  version: '2.3.0'
+  api-docs:
+    version: openapi_3_1
+  cache:
+    disabled: true
