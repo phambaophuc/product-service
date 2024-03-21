@@ -3,6 +3,7 @@ package org.pbp.productservice.service.impl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pbp.productservice.dto.ProductDto;
+import org.pbp.productservice.entity.Product;
 import org.pbp.productservice.exception.ProductNotFoundException;
 import org.pbp.productservice.mapper.ProductMapper;
 import org.pbp.productservice.repository.ProductRepo;
@@ -50,6 +51,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteById(Long productId) {
+        productRepo.findById(productId)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found with id " + productId));
         log.info("** Product service: delete product by id *");
         productRepo.deleteById(productId);
     }

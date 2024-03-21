@@ -3,6 +3,7 @@ package org.pbp.productservice.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.pbp.productservice.dto.ProductDto;
+import org.pbp.productservice.dto.response.MessageResponse;
 import org.pbp.productservice.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,9 +44,9 @@ public class ProductController {
     }
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<String> deleteById(@PathVariable Long productId) {
+    public ResponseEntity<MessageResponse> deleteById(@PathVariable Long productId) {
         log.info("** Product controller: delete product by id *");
         productService.deleteById(productId);
-        return ResponseEntity.ok("Deleted Successfully!");
+        return ResponseEntity.ok(new MessageResponse("Deleted Successfully!"));
     }
 }
