@@ -47,4 +47,4 @@ springdoc:
     disabled: true
 
 gateway:
-  url: ${GATEWAY_URL:http://localhost:8765/product-service}
+  url: ${GATEWAY_URL:http://localhost:8765}
