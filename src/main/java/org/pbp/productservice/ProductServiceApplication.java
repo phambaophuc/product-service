@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @OpenAPIDefinition(info =
 @Info(title = "Product API", version = "${springdoc.version}", description = "Documentation Product API v1.0"),
-        servers = @Server(url = "${gateway.url}")
+        servers = @Server(url = "${gateway.url}/product-service")
 )
 public class ProductServiceApplication {
 
